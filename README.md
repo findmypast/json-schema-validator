@@ -1,6 +1,6 @@
 # JsonSchemaValidator
 
-**TODO: Add description**
+**A wrapper for validating JSON using JSON schemas**
 
 ## Installation
 
@@ -10,15 +10,15 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
 
     ```elixir
     def deps do
-      [{:json_schema_validator, "~> 0.1.0"}]
+      [{:json_schema_validator, git: "git@github.com:findmypast/json-schema-validator.git", tag: "0.1.0"}]
     end
     ```
 
-  2. Ensure `json_schema_validator` is started before your application:
+ 2. Run mix deps.get
+ 
+ 3. Run mix test
+    
+##Example usages
 
-    ```elixir
-    def application do
-      [applications: [:json_schema_validator]]
-    end
-    ```
+
 
