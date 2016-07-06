@@ -5,16 +5,16 @@ defmodule JsonSchemaValidator.Mixfile do
     [app: :json_schema_validator,
      version: "0.1.0",
      elixir: "~> 1.3",
-     build_embedded: Mix.env == :prod,
-     start_permanent: Mix.env == :prod,
-     deps: deps()]
+     deps: deps(),
+     description: description(),
+     package: package()]
   end
 
   # Configuration for the OTP application
   #
   # Type "mix help compile.app" for more information
   def application do
-    [applications: [:logger]]
+    []
   end
 
   # Dependencies can be Hex packages:
@@ -29,4 +29,21 @@ defmodule JsonSchemaValidator.Mixfile do
   defp deps do
     [{:ex_json_schema, "~> 0.4"}]
   end
+
+  defp description do
+    """
+    A thin wrapper around a Json Schema Validator.
+    """
+  end
+
+  defp package do
+    [
+      name: :json_schema_validator,
+      files: ["lib", "mix.exs", "README*", "readme*"],
+      maintainers: ["Dave Elliott", "Kimberley McCann"],
+      licenses: [],
+      links: %{"GitHub" => "https://github.com/findmypast/json-schema-validator"}
+    ]
+  end
+
 end
