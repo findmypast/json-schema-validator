@@ -17,7 +17,7 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
   2. Run mix deps.get
 
 
-##Example usages
+##Example Usage
 
 ```
   alias JsonSchemaValidator.JsonSchema, as: JsonSchema
