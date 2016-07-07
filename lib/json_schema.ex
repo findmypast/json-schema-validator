@@ -1,8 +1,5 @@
 defmodule JsonSchemaValidator.JsonSchema do
 
-  @success_response %{success: true}
-  @failure_response %{success: false}
-
   def validate(json, schema) do
     schema
       |> ExJsonSchema.Validator.validate(json)
@@ -20,12 +17,11 @@ defmodule JsonSchemaValidator.JsonSchema do
   end
 
   defp success_response do
-    @success_response
+    {:ok}
   end
 
   defp error_response(errors) do
-    @failure_response
-      |> Map.put(:errors, errors)
+    {:error, errors}
   end
 
   defp error_tuple_to_map({message, property}) do
