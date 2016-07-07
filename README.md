@@ -56,7 +56,6 @@ Success response:
 
 Error response:
 ```
-%{errors: [%{error: "Schema does not allow additional properties.",
-     property: "#/test"}], success: false}
+{:error,[%{error: "Schema does not allow additional properties.", property: "#/test"}]}
 ```
 
