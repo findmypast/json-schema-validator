@@ -39,7 +39,12 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
       "description" => ""
     }
 
-    JsonSchema.validate(json_to_validate, schema)
+    result = JsonSchema.validate(json_to_validate, schema)
+    
+    case result do
+      {:ok} -> IO.inspect("success")
+      {:error, results} -> IO.inspect(results)
+    end
     
   end
 ```
