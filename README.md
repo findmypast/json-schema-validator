@@ -44,4 +44,14 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
   end
 ```
 
+Success response: 
+```
+%{success:true}
+```
+
+Error response:
+```
+%{errors: [%{error: "Schema does not allow additional properties.",
+     property: "#/test"}], success: false}
+```
 
