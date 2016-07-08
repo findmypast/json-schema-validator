@@ -23,6 +23,7 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
   alias JsonSchemaValidator.JsonSchema, as: JsonSchema
   
   defp example do
+  #An example of the schema that we will use to validate the json
     schema = %{
         "$schema" => "http://json-schema.org/draft-04/schema#",
         "type" => "object",
@@ -34,6 +35,7 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
         "additionalProperties" => false
     }
     
+    #The json to be validated
     json_to_validate = %{
       "surname" => "elliott",
       "description" => ""
