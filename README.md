@@ -19,7 +19,7 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
 
 ##Example Usage
 
-```
+```elixir
   alias JsonSchemaValidator.JsonSchema, as: JsonSchema
   
   defp example do
@@ -50,12 +50,12 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
 ```
 
 Success response: 
-```
+```elixir
 {:ok}
 ```
 
 Error response:
-```
+```elixir
 {:error,[%{error: "Schema does not allow additional properties.", property: "#/test"}]}
 ```
 
