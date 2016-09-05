@@ -2,12 +2,14 @@
 
 **A wrapper for validating JSON using JSON schemas**
 
+[Release Log](https://github.com/findmypast/json-schema-validator/blob/master/RELEASE_LOG.md)
+
 ## Installation
 
 If [available in Hex](https://hex.pm/docs/publish), the package can be installed as:
 
   1. Add `json_schema_validator` to your list of dependencies in `mix.exs`:
-  
+
       ```elixir
     def deps do
       [{:json_schema_validator, git: "git@github.com:findmypast/json-schema-validator.git", tag: "0.1.0"}]
@@ -21,7 +23,7 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
 
 ```elixir
   alias JsonSchemaValidator.JsonSchema, as: JsonSchema
-  
+
   defp example do
   #An example of the schema that we will use to validate the json
     schema = %{
@@ -34,7 +36,7 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
         "required" => ["surname"],
         "additionalProperties" => false
     }
-    
+
     #The json to be validated
     json_to_validate = %{
       "surname" => "elliott",
@@ -42,16 +44,16 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
     }
 
     result = JsonSchema.validate(json_to_validate, schema)
-    
+
     case result do
       {:ok} -> IO.inspect("success")
       {:error, results} -> IO.inspect(results)
     end
-    
+
   end
 ```
 
-Success response: 
+Success response:
 ```elixir
 {:ok}
 ```
@@ -60,4 +62,3 @@ Error response:
 ```elixir
 {:error,[%{error: "Schema does not allow additional properties.", property: "#/test"}]}
 ```
-
