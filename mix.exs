@@ -41,7 +41,6 @@ defmodule JsonSchemaValidator.Mixfile do
   defp package do
     [
       name: :json_schema_validator,
-      files: ["lib", "mix.exs", "README*", "readme*"],
       maintainers: ["Dave Elliott", "Kimberley McCann"],
       licenses: ["Apache 2.0"],
       links: %{"GitHub" => "https://github.com/findmypast/json-schema-validator"}
