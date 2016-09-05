@@ -14,7 +14,7 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
 
       ```elixir
     def deps do
-      [{:json_schema_validator, git: "git@github.com:findmypast/json-schema-validator.git", tag: "0.1.0"}]
+      [{:json_schema_validator, "~> 0.2.1"}]
     end
     ```
 
