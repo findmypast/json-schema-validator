@@ -1,4 +1,54 @@
 defmodule JsonSchemaValidator.JsonSchema do
+  @moduledoc """
+    Validates a JSON string given a JSON schema
+  """
+
+  @doc """
+    Validates a JSON string given a JSON schema.
+
+    Returns `{:ok}` if the schema has validated correctly.
+    Returns `{:error,
+      [
+        %{
+          error: "String with Error Description",
+          property: "String with property involved in error"
+        }
+      ]
+    }`
+
+    ## Examples
+
+        iex> schema = %{
+        ...>   "$schema" => "http://json-schema.org/draft-04/schema#",
+        ...>   "type" => "object",
+        ...>   "properties" => %{
+        ...>     "surname" => %{"type" => "string"}
+        ...>   },
+        ...>   "required" => ["surname"],
+        ...>   "additionalProperties" => false
+        ...> }
+        iex> JsonSchemaValidator.JsonSchema.validate(%{"surname" => "Smith"}, schema)
+        {:ok}
+
+        iex> schema = %{
+        ...>   "$schema" => "http://json-schema.org/draft-04/schema#",
+        ...>   "type" => "object",
+        ...>   "properties" => %{
+        ...>     "surname" => %{"type" => "string"}
+        ...>   },
+        ...>   "required" => ["surname"],
+        ...>   "additionalProperties" => false
+        ...> }
+        iex> JsonSchemaValidator.JsonSchema.validate(%{"sorename" => "Smith"}, schema)
+        {:error,
+            [
+              %{error: "Schema does not allow additional properties.",
+                property: "#/sorename"},
+              %{error: "Required property surname was not present.",
+                property: "#"}
+            ]
+        }
+  """
 
   def validate(json, schema) do
     schema

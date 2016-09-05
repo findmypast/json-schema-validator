@@ -1,6 +1,7 @@
 defmodule JsonSchemaValidator.JsonSchemaTest do
   use ExUnit.Case, async: false
   alias JsonSchemaValidator.JsonSchema, as: Sut
+  doctest JsonSchemaValidator.JsonSchema
 
   setup do
   %{
@@ -55,7 +56,6 @@ defmodule JsonSchemaValidator.JsonSchemaTest do
     }
 
     result = act(json, inputs)
-
     assert elem(result,0) == :error
   end
 
