@@ -15,8 +15,7 @@ defmodule JsonSchemaValidator.Mixfile do
       package: package(),
       test_coverage: [tool: ExCoveralls],
       preferred_cli_env: ["coveralls": :test, "coveralls.detail": :test, "coveralls.post": :test, "coveralls.html": :test],
-      # if you want to use espec,
-      # test_coverage: [tool: ExCoveralls, test_task: "espec"]
+      dialyzer: [plt_add_deps: :transitive]
     ]
   end
 
@@ -27,8 +26,9 @@ defmodule JsonSchemaValidator.Mixfile do
   defp deps do
     [
       {:ex_json_schema, "~> 0.4"},
-      {:excoveralls, "~> 0.5"},
-      {:ex_doc, "~> 0.13"}
+      {:excoveralls, "~> 0.5", only: [:dev]},
+      {:ex_doc, "~> 0.13", only: [:dev]},
+      {:dialyxir, "~> 0.3", only: [:dev]}
     ]
   end
 

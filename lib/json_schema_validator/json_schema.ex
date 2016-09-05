@@ -3,6 +3,8 @@ defmodule JsonSchemaValidator.JsonSchema do
     Validates a JSON string given a JSON schema
   """
 
+  alias ExJsonSchema.Validator
+
   @doc """
     Validates a JSON string given a JSON schema.
 
@@ -49,10 +51,10 @@ defmodule JsonSchemaValidator.JsonSchema do
             ]
         }
   """
-
+  @spec validate(map, map) :: {:ok} | {:error, list}
   def validate(json, schema) do
     schema
-      |> ExJsonSchema.Validator.validate(json)
+      |> Validator.validate(json)
       |> format_response
   end
 
