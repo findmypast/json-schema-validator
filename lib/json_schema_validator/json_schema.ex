@@ -6,7 +6,7 @@ defmodule JsonSchemaValidator.JsonSchema do
   alias ExJsonSchema.Validator
 
   @doc """
-    Validates a JSON string given a JSON schema.
+    Validates a JSON parsed as a map `json` given a JSON schema `schema`.
 
     Returns `{:ok}` if the schema has validated correctly.
     Returns `{:error,
@@ -29,7 +29,8 @@ defmodule JsonSchemaValidator.JsonSchema do
         ...>   "required" => ["surname"],
         ...>   "additionalProperties" => false
         ...> }
-        iex> JsonSchemaValidator.JsonSchema.validate(%{"surname" => "Smith"}, schema)
+        iex> alias JsonSchemaValidator.JsonSchema
+        iex> JsonSchema.validate(%{"surname" => "Smith"}, schema)
         {:ok}
 
         iex> schema = %{
@@ -41,7 +42,8 @@ defmodule JsonSchemaValidator.JsonSchema do
         ...>   "required" => ["surname"],
         ...>   "additionalProperties" => false
         ...> }
-        iex> JsonSchemaValidator.JsonSchema.validate(%{"sorename" => "Smith"}, schema)
+        iex> alias JsonSchemaValidator.JsonSchema
+        iex> JsonSchema.validate(%{"sorename" => "Smith"}, schema)
         {:error,
             [
               %{error: "Schema does not allow additional properties.",
@@ -54,8 +56,8 @@ defmodule JsonSchemaValidator.JsonSchema do
   @spec validate(map, map) :: {:ok} | {:error, list}
   def validate(json, schema) do
     schema
-      |> Validator.validate(json)
-      |> format_response
+    |> Validator.validate(json)
+    |> format_response
   end
 
   defp format_response(:ok) do
@@ -64,8 +66,8 @@ defmodule JsonSchemaValidator.JsonSchema do
 
   defp format_response({:error, error_details}) do
     error_details
-      |> Enum.map(fn(x) -> error_tuple_to_map(x) end)
-      |> error_response
+    |> Enum.map(fn(x) -> error_tuple_to_map(x) end)
+    |> error_response
   end
 
   defp success_response do
