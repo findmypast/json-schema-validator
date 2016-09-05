@@ -9,49 +9,52 @@ defmodule JsonSchemaValidator.JsonSchema do
     Validates a JSON parsed as a map `json` given a JSON schema `schema`.
 
     Returns `{:ok}` if the schema has validated correctly.
-    Returns `{:error,
+    Otherwise, returns:
+    ```
+    {:error,
       [
         %{
           error: "String with Error Description",
           property: "String with property involved in error"
         }
       ]
-    }`
+    }
+    ```
 
-    ## Examples
+  ## Examples
 
-        iex> schema = %{
-        ...>   "$schema" => "http://json-schema.org/draft-04/schema#",
-        ...>   "type" => "object",
-        ...>   "properties" => %{
-        ...>     "surname" => %{"type" => "string"}
-        ...>   },
-        ...>   "required" => ["surname"],
-        ...>   "additionalProperties" => false
-        ...> }
-        iex> alias JsonSchemaValidator.JsonSchema
-        iex> JsonSchema.validate(%{"surname" => "Smith"}, schema)
-        {:ok}
+      iex> schema = %{
+      ...>   "$schema" => "http://json-schema.org/draft-04/schema#",
+      ...>   "type" => "object",
+      ...>   "properties" => %{
+      ...>     "surname" => %{"type" => "string"}
+      ...>   },
+      ...>   "required" => ["surname"],
+      ...>   "additionalProperties" => false
+      ...> }
+      iex> alias JsonSchemaValidator.JsonSchema
+      iex> JsonSchema.validate(%{"surname" => "Smith"}, schema)
+      {:ok}
 
-        iex> schema = %{
-        ...>   "$schema" => "http://json-schema.org/draft-04/schema#",
-        ...>   "type" => "object",
-        ...>   "properties" => %{
-        ...>     "surname" => %{"type" => "string"}
-        ...>   },
-        ...>   "required" => ["surname"],
-        ...>   "additionalProperties" => false
-        ...> }
-        iex> alias JsonSchemaValidator.JsonSchema
-        iex> JsonSchema.validate(%{"sorename" => "Smith"}, schema)
-        {:error,
-            [
-              %{error: "Schema does not allow additional properties.",
-                property: "#/sorename"},
-              %{error: "Required property surname was not present.",
-                property: "#"}
-            ]
-        }
+      iex> schema = %{
+      ...>   "$schema" => "http://json-schema.org/draft-04/schema#",
+      ...>   "type" => "object",
+      ...>   "properties" => %{
+      ...>     "surname" => %{"type" => "string"}
+      ...>   },
+      ...>   "required" => ["surname"],
+      ...>   "additionalProperties" => false
+      ...> }
+      iex> alias JsonSchemaValidator.JsonSchema
+      iex> JsonSchema.validate(%{"sorename" => "Smith"}, schema)
+      {:error,
+          [
+            %{error: "Schema does not allow additional properties.",
+              property: "#/sorename"},
+            %{error: "Required property surname was not present.",
+              property: "#"}
+          ]
+      }
   """
   @spec validate(map, map) :: {:ok} | {:error, list}
   def validate(json, schema) do
