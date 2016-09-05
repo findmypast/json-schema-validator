@@ -2,7 +2,9 @@
 
 **A wrapper for validating JSON using JSON schemas**
 
-[Release Log](https://github.com/findmypast/json-schema-validator/blob/master/RELEASE_LOG.md)
+[Release Log](https://github.com/findmypast/json-schema-validator/blob/master/RELEASE_LOG.md)  
+[API Documentation](https://hexdocs.pm/json_schema_validator)
+
 
 ## Installation
 
