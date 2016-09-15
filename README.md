@@ -1,5 +1,8 @@
 # JsonSchemaValidator
 
+[![Hex pm](http://img.shields.io/hexpm/v/json_schema_validator.svg?style=flat)](https://hex.pm/packages/json_schema_validator)
+[![hex.pm downloads](https://img.shields.io/hexpm/dt/json_schema_validator.svg?style=flat)](https://hex.pm/packages/json_schema_validator)
+
 **A wrapper for validating JSON using JSON schemas**
 
 [Release Log](https://github.com/findmypast/json-schema-validator/blob/master/RELEASE_LOG.md)  
